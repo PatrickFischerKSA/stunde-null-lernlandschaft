@@ -11,37 +11,24 @@ const quizzes = {
           'Freddy erfährt, dass seine Eltern nach Theresienstadt verschleppt wurden und macht sich sofort auf den Weg.'
       },
       {
-        prompt: 'Warum ist Freddy Gray (Manfred Gans) im Mai 1945 unterwegs?',
-        options: [
-          'Er sucht seine in Theresienstadt deportierten Eltern.',
-          'Er soll deutsche Städte für die Alliierten verwalten.',
-          'Er begleitet eine Journalisten-Delegation.',
-          'Er kehrt als Tourist in die Niederlande zurück.'
-        ],
-        answer: 0,
-        explanation: 'Freddy erfährt, dass seine Eltern nach Theresienstadt verschleppt wurden und macht sich sofort auf den Weg.'
-      },
-      {
+        type: 'text',
         prompt: 'Wie lautet Freddys echter Name?',
-        options: ['Manfred Gans', 'Friedrich Grau', 'Karl Ganz', 'Moritz Gans'],
-        answer: 0,
+        keywords: ['manfred', 'gans', 'ganz'],
+        minMatch: 1,
         explanation: 'In der britischen Armee trägt er die Tarnidentität Frederick (Freddy) Gray.'
       },
       {
+        type: 'text',
         prompt: 'Womit verdienten Freddys Eltern in Borken ihr Geld?',
-        options: [
-          'Mit einer Exportfirma für Textilien und Schneiderbedarf.',
-          'Mit einem Kohlebergwerk.',
-          'Mit einem landwirtschaftlichen Großbetrieb.',
-          'Mit einer Schiffswerft.'
-        ],
-        answer: 0,
+        keywords: ['export', 'textil', 'schneiderbedarf', 'firma'],
+        minMatch: 1,
         explanation: 'Die Familie Gans führte eine gut gehende Exportfirma für Textilien und Schneiderbedarf.'
       },
       {
+        type: 'text',
         prompt: 'Welche Hafenstadt war im Herbst 1944 besonders hart umkämpft?',
-        options: ['Antwerpen', 'Rotterdam', 'Hamburg', 'Le Havre'],
-        answer: 0,
+        keywords: ['antwerpen'],
+        minMatch: 1,
         explanation: 'In Zeeland wird von schweren Kämpfen um die Hafenstadt Antwerpen berichtet.'
       },
       {
@@ -53,36 +40,24 @@ const quizzes = {
           'Die X‑Troop war eine britische Spezialeinheit aus deutschsprachigen (meist jüdischen) Soldaten für Aufklärung und Verhöre.'
       },
       {
-        prompt: 'Was beschreibt den Atlantikwall am treffendsten?',
-        options: [
-          'Eine 2.500 km lange Verteidigungslinie mit Bunkern, errichtet durch Zwangsarbeiter.',
-          'Eine Evakuierungsroute für die Wehrmacht.',
-          'Ein Versorgungskorridor der Alliierten.',
-          'Ein geheimes Funknetz der Resistance.'
-        ],
-        answer: 0,
+        type: 'text',
+        prompt: 'Was beschreibt den Atlantikwall am treffendsten? (Stichworte reichen)',
+        keywords: ['verteidigung', 'bunker', 'küste', 'zwangsarbeiter', '2.500'],
+        minMatch: 2,
         explanation: 'Der Atlantikwall sollte die Invasion verhindern und bestand aus Bunkern entlang der Küsten.'
       },
       {
-        prompt: 'Wofür stand die X-Troop?',
-        options: [
-          'Britische Spezialeinheit aus deutschsprachigen (meist jüdischen) Soldaten für Aufklärung und Verhöre.',
-          'Amerikanische Versorgungseinheit für Feldlazarette.',
-          'Sowjetische Panzereinheit in Berlin.',
-          'Eine deutsche Widerstandsgruppe in Münster.'
-        ],
-        answer: 0,
-        explanation: 'Die X-Troop nutzte deutsche Sprache und Kulturkenntnis für Infiltration, Aufklärung und Verhör.'
+        type: 'text',
+        prompt: 'Wofür stand die X‑Troop? (Stichworte)',
+        keywords: ['britisch', 'spezialeinheit', 'deutsch', 'aufklärung', 'verhör', 'jüdisch'],
+        minMatch: 2,
+        explanation: 'Die X‑Troop nutzte deutsche Sprache und Kulturkenntnis für Infiltration, Aufklärung und Verhör.'
       },
       {
+        type: 'text',
         prompt: 'Warum wurde die deutsche Kapitulation zweimal unterzeichnet?',
-        options: [
-          'Erst in Reims, dann auf Wunsch der Sowjets am 9. Mai in Berlin-Karlshorst.',
-          'Weil die erste Unterzeichnung ungültig war.',
-          'Weil die USA eine gesonderte Kapitulation verlangten.',
-          'Weil Deutschland erneut mobilisierte.'
-        ],
-        answer: 0,
+        keywords: ['reims', 'karlshorst', 'sowjets', '9. mai', 'zweites'],
+        minMatch: 2,
         explanation: 'Die Sowjets verlangten eine zweite Unterzeichnung im Hauptquartier der Roten Armee.'
       },
       {
@@ -94,54 +69,38 @@ const quizzes = {
           'Wegen eines Fleckfieber-Ausbruchs im überfüllten Lager ordnete der sowjetische Kommandant Quarantäne an.'
       },
       {
-        prompt: 'Wann startet Freddys Reise laut Bericht?',
-        options: ['12. Mai 1945', '8. Mai 1945', '1. Juni 1945', '25. März 1945'],
-        answer: 0,
+        type: 'text',
+        prompt: 'Wann startet Freddys Reise laut Bericht? (Datum)',
+        keywords: ['12', 'mai', '1945'],
+        minMatch: 2,
         explanation: 'Im Bericht ist der 12. Mai 1945 als erster Reisetag festgehalten.'
       },
       {
+        type: 'text',
         prompt: 'Was sieht Freddy in Kleve, der ersten deutschen Stadt seiner Route?',
-        options: [
-          'Die Altstadt ist zu etwa 80 Prozent zerstört.',
-          'Die Stadt ist weitgehend unversehrt.',
-          'Die Bevölkerung feiert den Sieg.',
-          'Die Stadt ist vollständig evakuiert.'
-        ],
-        answer: 0,
+        keywords: ['80', 'prozent', 'zerstört', 'trümmern'],
+        minMatch: 2,
         explanation: 'Kleve ist schwer zerstört; die Altstadt liegt zu rund 80 Prozent in Trümmern.'
       },
       {
-        prompt: 'Welche Aussage trifft den Mythos der „Trümmerfrauen“ am besten?',
-        options: [
-          'Viele Aufnahmen waren gestellt, Aufräumarbeiten dienten auch als Strafe für ehemalige NSDAP-Mitglieder.',
-          'Die Arbeit wurde ausschließlich von freiwilligen Frauen organisiert.',
-          'Die Trümmer wurden nur durch Militärs beseitigt.',
-          'Der Begriff entstand erst in den 1990er Jahren.'
-        ],
-        answer: 0,
+        type: 'text',
+        prompt: 'Was ist am Mythos der „Trümmerfrauen“ problematisch? (Stichworte)',
+        keywords: ['gestellt', 'aufnahmen', 'zwang', 'strafe', 'nsdap'],
+        minMatch: 2,
         explanation: 'Das Bild der fröhlichen Trümmerfrauen ist stark idealisiert; Aufräumen war oft Zwangsarbeit oder Strafe.'
       },
       {
+        type: 'text',
         prompt: 'Wann wurde das Fraternisierungsverbot aufgehoben?',
-        options: ['Oktober 1945', 'Mai 1945', 'Januar 1946', 'Juni 1944'],
-        answer: 0,
+        keywords: ['oktober', '1945'],
+        minMatch: 1,
         explanation: 'Im Herbst 1945 wurde das strenge Verbot schrittweise aufgehoben.'
       },
       {
-        prompt: 'Warum wurde Theresienstadt kurz nach der Befreiung unter Quarantäne gestellt?',
-        options: [
-          'Wegen eines Fleckfieber-Ausbruchs im überfüllten Lager.',
-          'Weil das Lager vollständig geräumt werden sollte.',
-          'Weil neue Deportationen bevorstanden.',
-          'Weil die Rote Armee das Lager als Gefängnis nutzen wollte.'
-        ],
-        answer: 0,
-        explanation: 'Transporter aus dem Osten brachten Fleckfieber; daher ordnete der sowjetische Kommandant Quarantäne an.'
-      },
-      {
+        type: 'text',
         prompt: 'Wohin emigriert Anita Lam mit ihrer Familie?',
-        options: ['Nach New York', 'Nach London', 'Nach Tel Aviv', 'Nach Zürich'],
-        answer: 0,
+        keywords: ['new york'],
+        minMatch: 1,
         explanation: 'Anita flieht 1938/39 aus Deutschland und emigriert mit ihrer Familie nach New York.'
       }
     ]
@@ -158,54 +117,38 @@ const quizzes = {
           'US-Bomber flogen Rundtouren, um dem Bodenpersonal das Ausmaß der Zerstörung zu zeigen.'
       },
       {
-        prompt: 'Was war die „Trolley-Mission“ im Mai 1945?',
-        options: [
-          'Rundflüge der US Air Force, um dem Bodenpersonal die Zerstörung zu zeigen.',
-          'Eine geheime Evakuierungsaktion für Gefangene.',
-          'Eine Offensive auf die Rheinbrücken.',
-          'Ein Versorgungskorridor für Städte.'
-        ],
-        answer: 0,
-        explanation: 'Die Bomber flogen als „Trümmer-Touristen“ – keine Angriffe, sondern Demonstrationsflüge.'
-      },
-      {
+        type: 'text',
         prompt: 'Welche Städte lagen auf der Nordroute der Trümmerflüge?',
-        options: [
-          'Münster, Bremen, Hamburg, Dortmund',
-          'München, Nürnberg, Stuttgart, Augsburg',
-          'Berlin, Dresden, Leipzig, Jena',
-          'Köln, Frankfurt, Mannheim, Saarbrücken'
-        ],
-        answer: 0,
+        keywords: ['münster', 'bremen', 'hamburg', 'dortmund'],
+        minMatch: 2,
         explanation: 'Die Nordroute überflog mehrere Städte Nord- und Westdeutschlands.'
       },
       {
+        type: 'text',
         prompt: 'Wie viele Menschen waren 1945 in Deutschland obdachlos?',
-        options: ['18 Millionen', '5 Millionen', '2 Millionen', '30 Millionen'],
-        answer: 0,
+        keywords: ['18', 'million'],
+        minMatch: 1,
         explanation: 'Im Dokument wird von 18 Mio. Obdachlosen gesprochen.'
       },
       {
+        type: 'text',
         prompt: 'Was geschah in Pforzheim im Februar 1945?',
-        options: [
-          'Ein britischer Angriff tötete etwa 17.600 Menschen (ein Drittel der Bevölkerung).',
-          'Die Stadt wurde zur Hauptstadt erklärt.',
-          'Die Stadt blieb nahezu unversehrt.',
-          'Ein Großbrand zerstörte ein Munitionslager ohne Opfer.'
-        ],
-        answer: 0,
+        keywords: ['britisch', 'angriff', '17.600', 'drittel', 'bevölkerung'],
+        minMatch: 2,
         explanation: 'Pforzheim wurde schwer bombardiert; die Zahl der Opfer war extrem hoch.'
       },
       {
+        type: 'text',
         prompt: 'Wie viele Flüchtlinge aus den ehemaligen Ostgebieten suchten eine neue Heimat?',
-        options: ['Über 10 Millionen', 'Unter 1 Million', '3 Millionen', '20 Millionen'],
-        answer: 0,
+        keywords: ['10', 'million', 'ostpreußen', 'schlesien', 'pommern'],
+        minMatch: 1,
         explanation: 'Aus Ostpreußen, Schlesien und Pommern waren über 10 Mio. Menschen unterwegs.'
       },
       {
+        type: 'text',
         prompt: 'Wie viele deutsche Soldaten gerieten bei Kriegsende in alliierte Gefangenschaft?',
-        options: ['Etwa 11 Millionen', 'Etwa 1 Million', 'Etwa 25 Millionen', 'Etwa 4 Millionen'],
-        answer: 0,
+        keywords: ['11', 'million'],
+        minMatch: 1,
         explanation: 'Das Dokument nennt rund 11 Mio. Kriegsgefangene.'
       },
       {
@@ -217,47 +160,31 @@ const quizzes = {
           'Genannt werden Überfüllung, schlechte Versorgung/Trinkwasser und katastrophale Hygiene.'
       },
       {
+        type: 'text',
         prompt: 'Was kennzeichnete die Rheinwiesenlager?',
-        options: [
-          'Extreme Überfüllung, schlechte Versorgung und katastrophale Hygiene.',
-          'Komfortable Unterkünfte mit medizinischer Vollversorgung.',
-          'Kleine Lager für jeweils maximal 1.000 Personen.',
-          'Ausschließlich zivile Internierungslager.'
-        ],
-        answer: 0,
+        keywords: ['überfüll', 'versorgung', 'hygiene', '30', '50.000'],
+        minMatch: 2,
         explanation: 'Lager für 20.000 waren mit 30.000 bis 50.000 Menschen belegt.'
       },
       {
+        type: 'text',
         prompt: 'Worauf zielten amerikanische Tieflieger ab 1944 vor allem?',
-        options: [
-          'Bahnhöfe, Züge und Verkehrswege',
-          'Ausschließlich Bauernhöfe',
-          'Nur militärische Kasernen außerhalb der Städte',
-          'Allein auf Häfen an der Nordsee'
-        ],
-        answer: 0,
+        keywords: ['bahnhöfe', 'züge', 'verkehrswege'],
+        minMatch: 1,
         explanation: 'Der Fokus lag auf Transportwegen, traf aber auch Innenstädte und Siedlungen.'
       },
       {
+        type: 'text',
         prompt: 'Warum gilt der Bombenkrieg als doppelter Fehlschlag?',
-        options: [
-          'Die Angriffe auf Zivilstädte brachen die Moral nicht und die Industrie blieb leistungsfähig.',
-          'Er stoppte die Produktion vollständig und beendete den Krieg sofort.',
-          'Er führte zu einer sofortigen Kapitulation 1942.',
-          'Er konnte nur von der Sowjetunion geführt werden.'
-        ],
-        answer: 0,
+        keywords: ['moral', 'nicht', 'gebrochen', 'industrie', 'leistungsfähig'],
+        minMatch: 2,
         explanation: 'Der erhoffte Widerstand gegen das Regime blieb aus, zudem blieb die Industrie teils leistungsfähig.'
       },
       {
+        type: 'text',
         prompt: 'Welche Aussage zu Kindern nach dem Krieg trifft zu?',
-        options: [
-          'Etwa 20 Millionen wurden Halbwaisen, rund 500.000 hatten keine Eltern mehr.',
-          'Es gab keine Auswirkungen auf Kinder.',
-          'Nur 50.000 Kinder waren betroffen.',
-          'Alle Kinder wurden sofort in Pflegefamilien untergebracht.'
-        ],
-        answer: 0,
+        keywords: ['20', 'million', 'halbwaisen', '500.000', 'eltern'],
+        minMatch: 2,
         explanation: 'Das Dokument nennt 20 Mio. Halbwaisen und etwa eine halbe Million Vollwaisen.'
       }
     ]
