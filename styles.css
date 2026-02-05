@@ -20,7 +20,7 @@ body {
   margin: 0;
   font-family: 'Space Grotesk', sans-serif;
   color: var(--ink);
-  background: radial-gradient(circle at top left, #f6d9c2 0%, #f8efe4 45%, #f4f1ea 100%);
+  background: radial-gradient(circle at top left, #d9b49c 0%, #e2d2c4 45%, #d9d0c8 100%);
   position: relative;
   min-height: 100vh;
 }
@@ -32,7 +32,7 @@ body::before {
   background-image: url('assets/StundeNull.gif');
   background-size: cover;
   background-position: center;
-  opacity: 0.45;
+  opacity: 0.6;
   pointer-events: none;
   mix-blend-mode: normal;
   z-index: 0;
@@ -42,7 +42,7 @@ body::after {
   content: '';
   position: fixed;
   inset: 0;
-  background: linear-gradient(140deg, rgba(255, 248, 240, 0.7), rgba(255, 255, 255, 0.45));
+  background: linear-gradient(140deg, rgba(30, 20, 12, 0.25), rgba(10, 8, 6, 0.15));
   z-index: 0;
   pointer-events: none;
 }
