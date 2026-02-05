@@ -3,6 +3,14 @@ const quizzes = {
     title: 'Roadtrip 1945',
     questions: [
       {
+        type: 'text',
+        prompt: 'Warum ist Freddy Gray (Manfred Gans) im Mai 1945 unterwegs? (Stichworte reichen)',
+        keywords: ['eltern', 'theresienstadt', 'suchen', 'deportiert', 'lager'],
+        minMatch: 2,
+        explanation:
+          'Freddy erfährt, dass seine Eltern nach Theresienstadt verschleppt wurden und macht sich sofort auf den Weg.'
+      },
+      {
         prompt: 'Warum ist Freddy Gray (Manfred Gans) im Mai 1945 unterwegs?',
         options: [
           'Er sucht seine in Theresienstadt deportierten Eltern.',
@@ -37,6 +45,14 @@ const quizzes = {
         explanation: 'In Zeeland wird von schweren Kämpfen um die Hafenstadt Antwerpen berichtet.'
       },
       {
+        type: 'text',
+        prompt: 'Was war die X‑Troop? (Kurz erklären)',
+        keywords: ['spezialeinheit', 'britisch', 'deutsch', 'sprache', 'verhör', 'aufklärung', 'jüdisch'],
+        minMatch: 2,
+        explanation:
+          'Die X‑Troop war eine britische Spezialeinheit aus deutschsprachigen (meist jüdischen) Soldaten für Aufklärung und Verhöre.'
+      },
+      {
         prompt: 'Was beschreibt den Atlantikwall am treffendsten?',
         options: [
           'Eine 2.500 km lange Verteidigungslinie mit Bunkern, errichtet durch Zwangsarbeiter.',
@@ -68,6 +84,14 @@ const quizzes = {
         ],
         answer: 0,
         explanation: 'Die Sowjets verlangten eine zweite Unterzeichnung im Hauptquartier der Roten Armee.'
+      },
+      {
+        type: 'text',
+        prompt: 'Warum wurde Theresienstadt kurz nach der Befreiung unter Quarantäne gestellt?',
+        keywords: ['fleckfieber', 'seuche', 'epidemie', 'quarantäne', 'ausbruch'],
+        minMatch: 1,
+        explanation:
+          'Wegen eines Fleckfieber-Ausbruchs im überfüllten Lager ordnete der sowjetische Kommandant Quarantäne an.'
       },
       {
         prompt: 'Wann startet Freddys Reise laut Bericht?',
@@ -126,6 +150,14 @@ const quizzes = {
     title: 'Überleben 1945',
     questions: [
       {
+        type: 'text',
+        prompt: 'Was war die „Trolley-Mission“? (Stichworte reichen)',
+        keywords: ['rundflug', 'us', 'air force', 'zerstörung', 'trümmer', 'touristen'],
+        minMatch: 2,
+        explanation:
+          'US-Bomber flogen Rundtouren, um dem Bodenpersonal das Ausmaß der Zerstörung zu zeigen.'
+      },
+      {
         prompt: 'Was war die „Trolley-Mission“ im Mai 1945?',
         options: [
           'Rundflüge der US Air Force, um dem Bodenpersonal die Zerstörung zu zeigen.',
@@ -175,6 +207,14 @@ const quizzes = {
         options: ['Etwa 11 Millionen', 'Etwa 1 Million', 'Etwa 25 Millionen', 'Etwa 4 Millionen'],
         answer: 0,
         explanation: 'Das Dokument nennt rund 11 Mio. Kriegsgefangene.'
+      },
+      {
+        type: 'text',
+        prompt: 'Nenne zwei Probleme in den Rheinwiesenlagern.',
+        keywords: ['überfüll', 'hygiene', 'trinkwasser', 'versorgung', 'klo', 'seuche'],
+        minMatch: 2,
+        explanation:
+          'Genannt werden Überfüllung, schlechte Versorgung/Trinkwasser und katastrophale Hygiene.'
       },
       {
         prompt: 'Was kennzeichnete die Rheinwiesenlager?',
@@ -252,32 +292,69 @@ function renderQuiz(container, quiz) {
     feedback.className = 'feedback';
     feedback.style.display = 'none';
 
-    q.options.forEach((opt, optIndex) => {
-      const btn = document.createElement('button');
-      btn.className = 'option-btn';
-      btn.type = 'button';
-      btn.textContent = opt;
-      btn.addEventListener('click', () => {
-        if (btn.disabled) return;
-        const buttons = optionsWrap.querySelectorAll('button');
-        buttons.forEach((b) => (b.disabled = true));
+    if (q.type === 'text') {
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.className = 'text-input';
+      input.placeholder = 'Antwort eingeben...';
 
-        const isCorrect = optIndex === q.answer;
+      const checkBtn = document.createElement('button');
+      checkBtn.type = 'button';
+      checkBtn.className = 'option-btn';
+      checkBtn.textContent = 'Antwort prüfen';
+
+      checkBtn.addEventListener('click', () => {
+        if (checkBtn.disabled) return;
+        const raw = input.value.trim().toLowerCase();
+        const hits = (q.keywords || []).filter((kw) => raw.includes(kw));
+        const needed = q.minMatch ?? Math.max(1, Math.ceil((q.keywords || []).length / 2));
+        const isCorrect = raw.length > 0 && hits.length >= needed;
+
+        input.disabled = true;
+        checkBtn.disabled = true;
+
         if (isCorrect) {
-          btn.classList.add('correct');
+          checkBtn.classList.add('correct');
           feedback.textContent = `Richtig. ${q.explanation}`;
           score += 1;
         } else {
-          btn.classList.add('wrong');
-          buttons[q.answer].classList.add('correct');
-          feedback.textContent = `Noch nicht. ${q.explanation}`;
+          checkBtn.classList.add('wrong');
+          feedback.textContent = `Noch nicht. ${q.explanation} (Erwartete Stichworte: ${q.keywords.join(', ')})`;
         }
         feedback.style.display = 'block';
         answered += 1;
         scoreEl.textContent = `${score} / ${quiz.questions.length} richtig`;
       });
-      optionsWrap.append(btn);
-    });
+
+      optionsWrap.append(input, checkBtn);
+    } else {
+      q.options.forEach((opt, optIndex) => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn';
+        btn.type = 'button';
+        btn.textContent = opt;
+        btn.addEventListener('click', () => {
+          if (btn.disabled) return;
+          const buttons = optionsWrap.querySelectorAll('button');
+          buttons.forEach((b) => (b.disabled = true));
+
+          const isCorrect = optIndex === q.answer;
+          if (isCorrect) {
+            btn.classList.add('correct');
+            feedback.textContent = `Richtig. ${q.explanation}`;
+            score += 1;
+          } else {
+            btn.classList.add('wrong');
+            buttons[q.answer].classList.add('correct');
+            feedback.textContent = `Noch nicht. ${q.explanation}`;
+          }
+          feedback.style.display = 'block';
+          answered += 1;
+          scoreEl.textContent = `${score} / ${quiz.questions.length} richtig`;
+        });
+        optionsWrap.append(btn);
+      });
+    }
 
     card.append(title, optionsWrap, feedback);
     container.append(card);
@@ -294,6 +371,10 @@ function renderQuiz(container, quiz) {
       optionsWrap.querySelectorAll('button').forEach((btn) => {
         btn.disabled = false;
         btn.classList.remove('correct', 'wrong');
+      });
+      optionsWrap.querySelectorAll('input').forEach((input) => {
+        input.disabled = false;
+        input.value = '';
       });
     });
   });
