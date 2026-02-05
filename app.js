@@ -188,6 +188,159 @@ const quizzes = {
         explanation: 'Das Dokument nennt 20 Mio. Halbwaisen und etwa eine halbe Million Vollwaisen.'
       }
     ]
+  },
+  nachkriegszeit: {
+    title: 'Nachkriegszeit in Deutschland',
+    questions: [
+      {
+        type: 'text',
+        prompt: 'Was bedeutet der Begriff „Stunde Null“ im Mai 1945?',
+        keywords: ['neubeginn', 'zusammenbruch', 'ns', 'kapitulation', 'besatzung'],
+        minMatch: 2,
+        explanation:
+          'Er meint den Beginn von etwas Neuem nach dem Zusammenbruch des NS-Staates, auch wenn Kontinuitäten bleiben.'
+      },
+      {
+        type: 'text',
+        prompt: 'Welche vier Siegermächte besetzten Deutschland nach dem Krieg?',
+        keywords: ['usa', 'großbritannien', 'frankreich', 'sowjetunion'],
+        minMatch: 3,
+        explanation: 'Deutschland wurde von USA, Großbritannien, Frankreich und der Sowjetunion besetzt.'
+      },
+      {
+        type: 'text',
+        prompt: 'Warum gab es 1945 keine deutsche Nationalregierung?',
+        keywords: ['besetzt', 'zusammengebrochen', 'keine', 'regierung'],
+        minMatch: 2,
+        explanation: 'Der NS-Staat war zusammengebrochen und das Land stand unter Besatzung.'
+      },
+      {
+        type: 'text',
+        prompt: 'Nenne zwei typische Tauschgüter auf dem Schwarzmarkt.',
+        keywords: ['uhren', 'fotoapparate', 'pelz', 'zigaretten', 'bügeleisen', 'kinderwagen'],
+        minMatch: 2,
+        explanation:
+          'Im Video werden u. a. Uhren, Fotoapparate, Pelzmäntel und Zigaretten genannt.'
+      },
+      {
+        type: 'text',
+        prompt: 'Wofür wurden alte Stahlhelme in der Notzeit genutzt?',
+        keywords: ['suppentopf', 'kochen', 'stahlhelm'],
+        minMatch: 1,
+        explanation: 'Aus alten Stahlhelmen wurden Suppentöpfe gemacht.'
+      },
+      {
+        type: 'text',
+        prompt: 'Wie viele Flüchtlinge und Vertriebene aus den Ostgebieten mussten untergebracht werden?',
+        keywords: ['12', 'million'],
+        minMatch: 1,
+        explanation: 'Es waren rund 12 Millionen Menschen.'
+      },
+      {
+        type: 'text',
+        prompt: 'Warum räumten „Trümmerfrauen“ den Schutt weg?',
+        keywords: ['männer', 'gefallen', 'kriegsgefangenschaft', 'ruinen', 'schutt'],
+        minMatch: 2,
+        explanation: 'Viele Männer waren gefallen oder in Kriegsgefangenschaft, daher übernahmen Frauen die Arbeit.'
+      },
+      {
+        type: 'text',
+        prompt: 'Was passierte im Winter 1946/47?',
+        keywords: ['bitter', 'kalt', 'winter', '1946', '1947'],
+        minMatch: 2,
+        explanation: 'Der Winter 1946/47 war extrem kalt und verschärfte die Notlage.'
+      },
+      {
+        type: 'text',
+        prompt: 'Wie fühlten sich viele Deutsche nach dem Krieg?',
+        keywords: ['besiegt', 'gedemütigt', 'opfer'],
+        minMatch: 2,
+        explanation: 'Viele fühlten sich besiegt, gedemütigt und sahen sich selbst als Opfer.'
+      },
+      {
+        type: 'text',
+        prompt: 'Welche Armeen verübten laut Video Vergewaltigungen?',
+        keywords: ['amerikaner', 'russen', 'engländer', 'franzosen'],
+        minMatch: 2,
+        explanation: 'Genannt werden Amerikaner, Russen, Engländer und Franzosen.'
+      }
+    ]
+  },
+  nuernberg: {
+    title: 'Nürnberger Prozess',
+    questions: [
+      {
+        type: 'text',
+        prompt: 'Wann vereinbarten USA, Sowjetunion und Großbritannien die Anführer der Nazis vor Gericht zu stellen?',
+        keywords: ['herbst', '1943'],
+        minMatch: 1,
+        explanation: 'Bereits im Herbst 1943.'
+      },
+      {
+        type: 'text',
+        prompt: 'Wie heißt der internationale Gerichtshof in Nürnberg?',
+        keywords: ['international military tribunal', 'imt', 'internationaler militärgerichtshof'],
+        minMatch: 1,
+        explanation: 'International Military Tribunal (Internationaler Militärgerichtshof).'
+      },
+      {
+        type: 'text',
+        prompt: 'Nenne zwei zentrale Anklagekategorien.',
+        keywords: ['kriegsverbrechen', 'verbrechen gegen den frieden', 'verbrechen gegen die menschlichkeit'],
+        minMatch: 2,
+        explanation: 'Kriegsverbrechen, Verbrechen gegen den Frieden, Verbrechen gegen die Menschlichkeit.'
+      },
+      {
+        type: 'text',
+        prompt: 'Wie viele Hauptangeklagte standen vor Gericht?',
+        keywords: ['21'],
+        minMatch: 1,
+        explanation: 'Insgesamt 21 Männer.'
+      },
+      {
+        type: 'text',
+        prompt: 'Nenne zwei Angeklagte, die im Video erwähnt werden.',
+        keywords: ['göring', 'hess', 'speer', 'streicher'],
+        minMatch: 2,
+        explanation: 'Genannt werden u. a. Hermann Göring, Rudolf Hess, Albert Speer, Julius Streicher.'
+      },
+      {
+        type: 'text',
+        prompt: 'Warum sprechen viele Deutsche von „Siegerjustiz“?',
+        keywords: ['ungerecht', 'siegreiche', 'kriegsverbrechen', 'bombardierungen'],
+        minMatch: 2,
+        explanation:
+          'Viele hielten den Prozess für ungerecht, weil Verbrechen der Sieger nicht verhandelt wurden.'
+      },
+      {
+        type: 'text',
+        prompt: 'In welchem Zeitraum liefen die Hauptverfahren?',
+        keywords: ['20', 'november', '1945', '1', 'oktober', '1946'],
+        minMatch: 3,
+        explanation: 'Vom 20. November 1945 bis zum 1. Oktober 1946.'
+      },
+      {
+        type: 'text',
+        prompt: 'Wie viele Angeklagte wurden freigesprochen?',
+        keywords: ['drei', '3'],
+        minMatch: 1,
+        explanation: 'Drei Angeklagte wurden freigesprochen.'
+      },
+      {
+        type: 'text',
+        prompt: 'Was geschah mit Hermann Göring vor der Hinrichtung?',
+        keywords: ['selbstmord', 'gift', 'nacht', 'hinrichtung'],
+        minMatch: 2,
+        explanation: 'Er beging in der Nacht vor der Hinrichtung Suizid mit Gift.'
+      },
+      {
+        type: 'text',
+        prompt: 'Bis wann gab es weitere Prozesse in Nürnberg?',
+        keywords: ['1949'],
+        minMatch: 1,
+        explanation: 'Bis 1949 folgten weitere Prozesse.'
+      }
+    ]
   }
 };
 
